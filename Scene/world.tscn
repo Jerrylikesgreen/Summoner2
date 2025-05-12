@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://ciwoi16taaxmj"]
 
 [ext_resource type="Texture2D" uid="uid://dsiv5g1mhi47k" path="res://PNG/Grass.png" id="1_emx41"]
-[ext_resource type="PackedScene" uid="uid://dd3b6oin1jkaw" path="res://Scene/summon.tscn" id="1_pcvp0"]
+[ext_resource type="PackedScene" uid="uid://dd3b6oin1jkaw" path="res://Scene/summon_circle.tscn" id="1_pcvp0"]
 [ext_resource type="PackedScene" uid="uid://cpqx3xqwmbdfe" path="res://Scene/debug.tscn" id="1_scul4"]
 [ext_resource type="PackedScene" uid="uid://b3v8sqt2ditei" path="res://Scene/player.tscn" id="2_dlwip"]
 [ext_resource type="Script" uid="uid://bpdj4sq5x2jte" path="res://Scripts/debug.gd" id="2_pcvp0"]
@@ -46,4 +46,4 @@ grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="SummonCircles" parent="." instance=ExtResource("1_pcvp0")]
+[node name="SummonCircle" parent="." instance=ExtResource("1_pcvp0")]
