@@ -1,0 +1,1 @@
+class_name SummonBody extends CharacterBody2D

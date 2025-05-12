@@ -46,4 +46,4 @@ grow_vertical = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Summon" parent="." instance=ExtResource("1_pcvp0")]
+[node name="SummonCircles" parent="." instance=ExtResource("1_pcvp0")]

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name player_body extends CharacterBody2D
 
 
 
