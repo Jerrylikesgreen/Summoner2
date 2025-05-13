@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MeatResource" load_steps=3 format=3 uid="uid://caf5knojifvtm"]
+
+[ext_resource type="Script" uid="uid://b6oe4rqs4qmns" path="res://Scripts/meat_resource_script.gd" id="1_43w0g"]
+[ext_resource type="Texture2D" uid="uid://c41meegvt6u0u" path="res://PNG/Meat2.png" id="2_a6cbr"]
+
+[resource]
+script = ExtResource("1_43w0g")
+name = "Potion"
+type = "Potion"
+quantity = 1
+sprite = ExtResource("2_a6cbr")
