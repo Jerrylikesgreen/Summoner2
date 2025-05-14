@@ -13,6 +13,7 @@ script = ExtResource("1_ffe1k")
 selected_resource = ExtResource("2_aymgh")
 
 [node name="ItemBody" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
 script = ExtResource("2_xhjot")
 
 [node name="ItemSprite" type="Sprite2D" parent="ItemBody"]

@@ -23,5 +23,4 @@ func _ready() -> void:
 		pass
 
 func _process(_delta: float) -> void:
-
-	label.text = ItemType.keys()[item_type]
+	label.text = str(position) + str(global_position)

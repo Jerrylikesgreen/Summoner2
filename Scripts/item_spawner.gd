@@ -1,5 +1,7 @@
 class_name ItemSpawner extends Node2D
+@onready var world: Node2D = $".."
 
+@onready var label: Label = $Label
 
 const ITEM_MANAGER = preload("res://Scenes/item_manager.tscn")
 
@@ -14,5 +16,19 @@ var _spawn_location_3_is_active:bool = false
 
 
 func _ready() -> void:
-	
+	spawn_item(0)
+
 	pass # Replace with function body.
+
+
+
+
+func spawn_item(item_type) -> void:
+	var item_instance = ITEM_MANAGER.instantiate()
+	var item_position: Vector2
+	add_child(item_instance)
+	item_instance.item_type = item_type
+	item_position = spawn_location_1.get_position()
+	item_instance.set_position(item_position)
+	label.set_text(str(item_position) + str(item_instance.position) )
+	
