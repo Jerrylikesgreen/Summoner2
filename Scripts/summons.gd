@@ -1,5 +1,5 @@
 class_name Summon extends Node2D
-@onready var summon_body: SummonBody = $SummonBody
+@onready var summon_body:  = $SummonBody
 
 @export var target: Vector2 
 
