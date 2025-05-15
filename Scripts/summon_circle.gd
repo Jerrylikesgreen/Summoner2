@@ -11,8 +11,8 @@ enum SummonColor { YELLOW, GREEN, BLUE }
 const SUMMONS = preload("res://Scenes/summon_manager.tscn")
 var summon_target_position:Vector2
 var summon = SUMMONS.instantiate()
-
-
+var all_summons = {} # Dictionary : id -> Summon
+var next_enemy_id = 0
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -63,6 +63,9 @@ func color_summon_circle() -> void:
 		SummonColor.BLUE:
 			icon.modulate = Color.BLUE
 
+func generate_unique_id():
+	next_enemy_id += 1
+	return next_enemy_id
 
 func color_summon() -> Color:
 	match summon_color:
@@ -76,8 +79,11 @@ func color_summon() -> Color:
 			return Color.WHITE  # fallback if no match
 
 func spawn_summon() -> void:
-	var spawn  = SUMMONS.instantiate() 
+	var spawn  = SUMMONS.instantiate()
+	var id = generate_unique_id() 
 	target.add_child(spawn)
+	all_summons[id] = spawn
 	spawn.modulate = color_summon()
 	spawn.position = summon_target_position
+	
 	return

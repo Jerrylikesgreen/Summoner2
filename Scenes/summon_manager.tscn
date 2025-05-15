@@ -1,9 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://57gcvfrcnsp3"]
+[gd_scene load_steps=21 format=3 uid="uid://57gcvfrcnsp3"]
 
-[ext_resource type="Script" uid="uid://dwyl60h0e4ehq" path="res://Scripts/summons.gd" id="1_h01js"]
+[ext_resource type="Script" uid="uid://dwyl60h0e4ehq" path="res://Scripts/summon_manager.gd" id="1_h01js"]
 [ext_resource type="Script" uid="uid://ctfbg7u6rwktc" path="res://Scripts/summon_body.gd" id="2_30jtd"]
+[ext_resource type="Script" uid="uid://rjjk06jjiu7a" path="res://Scenes/state_machine.gd" id="2_d57ri"]
 [ext_resource type="Texture2D" uid="uid://daunm3s6tj2vq" path="res://PNG/BaseBody-Idle-Sheet.png" id="3_d57ri"]
+[ext_resource type="Script" uid="uid://dgaiyh6m7i7o8" path="res://Scenes/idle_behavior_tree.gd" id="3_ep7dd"]
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="4_ep7dd"]
+[ext_resource type="Script" uid="uid://cjn7u4ofgmk8j" path="res://Scenes/explore_behavior_tree.gd" id="4_ll5sk"]
+[ext_resource type="Script" uid="uid://ohfxn6tv3ije" path="res://Scenes/signal_lable.gd" id="8_ll5sk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2e84q"]
 atlas = ExtResource("3_d57ri")
@@ -91,12 +95,34 @@ radius = 87.2812
 [node name="SummonManager" type="Node2D"]
 script = ExtResource("1_h01js")
 
+[node name="SummonBehaviorTree" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_d57ri")
+
+[node name="IdleBehaviorTree" type="Node" parent="SummonBehaviorTree"]
+unique_name_in_owner = true
+script = ExtResource("3_ep7dd")
+
+[node name="WaitTimer" type="Timer" parent="SummonBehaviorTree/IdleBehaviorTree"]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="ExploreBehaviorTree" type="Node" parent="SummonBehaviorTree"]
+unique_name_in_owner = true
+script = ExtResource("4_ll5sk")
+
+[node name="ExploreTimer" type="Timer" parent="SummonBehaviorTree/ExploreBehaviorTree"]
+unique_name_in_owner = true
+one_shot = true
+
 [node name="SummonBody" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 31
 script = ExtResource("2_30jtd")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="SummonBody"]
+unique_name_in_owner = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_og84i")
 animation = &"Idle"
@@ -108,6 +134,7 @@ shape = SubResource("CapsuleShape2D_444u8")
 [node name="Pocket" type="Node" parent="SummonBody"]
 
 [node name="Detection" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 61
 monitorable = false
@@ -116,8 +143,38 @@ monitorable = false
 shape = SubResource("CircleShape2D_uawbc")
 
 [node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
 
+[node name="StateLabel" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -5.0
+offset_top = 55.0
+offset_right = 35.0
+offset_bottom = 78.0
+text = "State Lable"
+
+[node name="SignalLable" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = -1.0
+offset_top = 87.0
+offset_right = 91.0
+offset_bottom = 110.0
+text = "Signal Lable"
+script = ExtResource("8_ll5sk")
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="state_change" from="SummonBehaviorTree" to="." method="_on_summon_behavior_tree_state_change"]
+[connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree" method="_on_wait_timer_timeout"]
+[connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree/IdleBehaviorTree" method="_on_idle_wait_time_timeout"]
+[connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SignalLable" method="_on_wait_timer_timeout"]
+[connection signal="explore_behavior_started" from="SummonBehaviorTree/ExploreBehaviorTree" to="SummonBody" method="_on_explore_behavior_tree_explore_behavior_started"]
+[connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="SummonBehaviorTree" method="_on_explore_timer_timeout"]
+[connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="SignalLable" method="_on_explore_timer_timeout"]
 [connection signal="body_entered" from="Detection" to="." method="_on_vision_body_entered"]
+[connection signal="body_entered" from="Detection" to="SignalLable" method="_on_detection_body_entered"]
 [connection signal="body_shape_entered" from="Detection" to="." method="_on_detection_body_shape_entered"]
