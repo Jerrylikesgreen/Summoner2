@@ -151,7 +151,7 @@ offset_bottom = 23.0
 unique_name_in_owner = true
 offset_left = -5.0
 offset_top = 55.0
-offset_right = 35.0
+offset_right = 81.0
 offset_bottom = 78.0
 text = "State Lable"
 
@@ -164,9 +164,14 @@ offset_bottom = 110.0
 text = "Signal Lable"
 script = ExtResource("8_ll5sk")
 
-[node name="Label2" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 169.0
+offset_top = 82.0
+offset_right = 209.0
+offset_bottom = 122.0
+
+[node name="Label2" type="Label" parent="PanelContainer"]
+layout_mode = 2
 
 [connection signal="state_change" from="SummonBehaviorTree" to="." method="_on_summon_behavior_tree_state_change"]
 [connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree" method="_on_wait_timer_timeout"]

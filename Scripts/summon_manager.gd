@@ -5,7 +5,6 @@ class_name SummonManager extends Node2D
 @onready var label: Label = %Label
 @onready var summon_behavior_tree: SummonBehaviorTree = %SummonBehaviorTree
 
-@export var target: Vector2 
 
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
@@ -34,4 +33,3 @@ func _on_detection_body_shape_entered(body_rid: RID, body: Node2D, body_shape_in
 
 func _on_summon_behavior_tree_state_change(state: int) -> void:
 	current_state = state
-	summon_body.current_state = current_state

@@ -1,5 +1,5 @@
 extends Node
-@onready var summon_manager: SummonManager = $"."
+ 
 
 #globals
 

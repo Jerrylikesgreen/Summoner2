@@ -4,14 +4,17 @@ extends CharacterBody2D
 
 
 @onready var signal_lable: Label = %SignalLable
+@onready var label_2: Label = $"../PanelContainer/Label2"
+
 
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
 @export_enum("YELLOW", "GREEN", "BLUE") var SummonType
 @export var speed           : float = 50.0      
 @export var arrive_epsilon  : float = 15.0      
-@export var target          : Vector2          
+@export var target          : Vector2     
 
-
+func _process(delta: float) -> void:
+	label_2.set_text(str(target))
 
 func _physics_process(_delta: float) -> void:
 	if summon_manager.current_state == 0:
@@ -31,7 +34,6 @@ func _move_towards_target() -> void:
 	if position.distance_to(target) <= arrive_epsilon:
 		velocity = Vector2.ZERO        
 		return
-	summon_explore_target()
 	var dir := (target - position).normalized()
 	velocity = dir * speed
 				  
@@ -47,7 +49,7 @@ func _update_animation() -> void:
 # -------------------------------------------------------------
 
 func summon_explore_target() -> void:
-	var radius := 9000.0                  
+	var radius := 1000.0                  
 	var angle  := randf() * TAU
 	var offset := Vector2(cos(angle), sin(angle)) * randf() * radius
 	target = position + offset
