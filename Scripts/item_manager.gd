@@ -26,6 +26,7 @@ func _update_selected_resource() -> void:
 	selected_resource = RESOURCE_POOL.get(item_type)
 	item_name = selected_resource.name
 	item_body.selected_resource = selected_resource
+	item_body.position_set = global_position
 	
 	if label:
 		label.text = "Type: %s | Resource: %s" % [item_type, item_name]

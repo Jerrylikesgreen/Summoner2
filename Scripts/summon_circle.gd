@@ -1,7 +1,7 @@
 class_name SummonCircle extends Node2D
 
-@onready var target: Node2D = $".."
 @onready var icon: Sprite2D = $Icon
+@onready var spawn_container: Node2D = %SpawnContainer
 
 
 enum SummonColor { YELLOW, GREEN, BLUE }
@@ -81,10 +81,10 @@ func color_summon() -> Color:
 func spawn_summon() -> void:
 	var spawn  = SUMMONS.instantiate()
 	var id = generate_unique_id() 
-	target.add_child(spawn)
+	spawn_container.add_child(spawn)
 	all_summons[id] = spawn
 	spawn.modulate = color_summon()
-	spawn.position = summon_target_position
+	spawn.set_position(summon_target_position)
 	spawn.summon_name = Globals.data.summon_name
 	
 	return

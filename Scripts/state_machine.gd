@@ -6,11 +6,14 @@ signal state_change(state:int)
 
 @onready var idle_behavior_tree: IdleBehaviorTree = %IdleBehaviorTree
 @onready var explore_behavior_tree: ExploreBehaviorTree = %ExploreBehaviorTree
+@onready var action_behavior_tree: ActionBehaviorTree = %ActionBehaviorTree
 
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
-
-
+func _ready():
+	idle_behavior_tree.start_idle_behavor()
+	
+	
 func change_state(new_state)->void:
 	if new_state == 0:
 		current_state = 0
@@ -26,13 +29,21 @@ func change_state(new_state)->void:
 	if new_state == 2:
 		current_state = 2
 		emit_signal("state_change", current_state)
+		action_behavior_tree._is_doing_action = true
+		action_behavior_tree.start_action_behavior()
 
 
 func _on_explore_timer_timeout() -> void:
-	change_state(0)
-	pass # Replace with function body.
+	if current_state == 1:
+		change_state(0)
+	else:
+		return
+
 
 
 func _on_wait_timer_timeout() -> void:
-	change_state(1)
-	pass # Replace with function body.
+	pass
+	#if current_state == 0:
+	#	change_state(1)
+	#else:
+	#	return

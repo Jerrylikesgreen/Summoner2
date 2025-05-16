@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://57gcvfrcnsp3"]
+[gd_scene load_steps=23 format=3 uid="uid://57gcvfrcnsp3"]
 
 [ext_resource type="Script" uid="uid://dwyl60h0e4ehq" path="res://Scripts/summon_manager.gd" id="1_h01js"]
 [ext_resource type="Script" uid="uid://ctfbg7u6rwktc" path="res://Scripts/summon_body.gd" id="2_30jtd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dgaiyh6m7i7o8" path="res://Scripts/idle_behavior_tree.gd" id="3_ep7dd"]
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="4_ep7dd"]
 [ext_resource type="Script" uid="uid://cjn7u4ofgmk8j" path="res://Scripts/explore_behavior_tree.gd" id="4_ll5sk"]
+[ext_resource type="Script" uid="uid://dxq583pa70lmn" path="res://Scenes/action_behavior_tree.gd" id="5_duy7s"]
 [ext_resource type="Resource" uid="uid://b4i6hi6pt0jjr" path="res://Resources/summon_resource.tres" id="6_fhg23"]
 [ext_resource type="Script" uid="uid://ohfxn6tv3ije" path="res://Scripts/signal_lable.gd" id="8_ll5sk"]
 
@@ -91,7 +92,7 @@ radius = 2.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uawbc"]
-radius = 87.2812
+radius = 175.73
 
 [node name="SummonManager" type="Node2D"]
 script = ExtResource("1_h01js")
@@ -116,6 +117,10 @@ script = ExtResource("4_ll5sk")
 unique_name_in_owner = true
 one_shot = true
 
+[node name="ActionBehaviorTree" type="Node" parent="SummonBehaviorTree"]
+unique_name_in_owner = true
+script = ExtResource("5_duy7s")
+
 [node name="SummonBody" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 2
@@ -131,9 +136,11 @@ animation = &"Idle"
 autoplay = "Idle"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="SummonBody"]
+unique_name_in_owner = true
 shape = SubResource("CapsuleShape2D_444u8")
 
 [node name="Pocket" type="Node" parent="SummonBody"]
+unique_name_in_owner = true
 
 [node name="Detection" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -142,26 +149,28 @@ collision_mask = 61
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_uawbc")
 
 [node name="LableContainer" type="GridContainer" parent="."]
-offset_left = 116.0
-offset_top = 90.0
-offset_right = 156.0
-offset_bottom = 140.0
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
 
 [node name="Label2" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Lable2"
 
 [node name="Data" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Label" type="Label" parent="LableContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Detection"
+text = "DATA"
 
 [node name="StateLabel" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
@@ -177,6 +186,28 @@ script = ExtResource("8_ll5sk")
 [node name="DetectionLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Detection Lable"
+
+[node name="MovingTo" type="Label" parent="LableContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LableContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TLable" type="Label" parent="LableContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TLable"
+
+[node name="DistanceToTarget" type="Label" parent="LableContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="TargetPosition" type="Label" parent="LableContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [connection signal="state_change" from="SummonBehaviorTree" to="." method="_on_summon_behavior_tree_state_change"]
 [connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree" method="_on_wait_timer_timeout"]
@@ -185,6 +216,7 @@ layout_mode = 2
 [connection signal="explore_behavior_started" from="SummonBehaviorTree/ExploreBehaviorTree" to="SummonBody" method="_on_explore_behavior_tree_explore_behavior_started"]
 [connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="SummonBehaviorTree" method="_on_explore_timer_timeout"]
 [connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="LableContainer/SignalLable" method="_on_explore_timer_timeout"]
-[connection signal="body_entered" from="Detection" to="." method="_on_vision_body_entered"]
-[connection signal="body_entered" from="Detection" to="LableContainer/SignalLable" method="_on_detection_body_entered"]
-[connection signal="body_shape_entered" from="Detection" to="." method="_on_detection_body_shape_entered"]
+[connection signal="action_behavior_started" from="SummonBehaviorTree/ActionBehaviorTree" to="." method="_on_action_behavior_tree_action_behavior_started"]
+[connection signal="on_idle_too_long" from="SummonBody" to="." method="_on_summon_body_on_idle_too_long"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_entered" from="Detection" to="SummonBody" method="_on_detection_body_entered"]

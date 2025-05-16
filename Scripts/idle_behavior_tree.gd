@@ -1,4 +1,4 @@
-class_name IdleBehaviorTree extends Node
+class_name IdleBehaviorTree extends SummonBehaviorTree
 @onready var wait_timer: Timer = %WaitTimer
 
 @export var wait_time: float = 2.0
@@ -6,9 +6,14 @@ class_name IdleBehaviorTree extends Node
 
 # Idles state should stay Idle unti
 
+
+
 func start_idle_behavor():
-	_is_idle = true
-	wait_timer.start(wait_time)
+	if current_state != 0:
+		return
+	else:
+		_is_idle = true
+		wait_timer.start(wait_time)
 
 func _on_idle_wait_time_timeout() -> void:
 	_is_idle = false

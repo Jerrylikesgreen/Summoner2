@@ -11,8 +11,8 @@ func _ready() -> void:
 	Globals.debug_signal.connect(_on_debug_signal)  
 
 func _process(delta: float) -> void:
-	if player.position != position:
-		set_position(player.position)
+	if player.global_position != global_position:
+		set_position(player.global_position)
 
 func _on_debug_signal(header: String, body: String) -> void:
 	debug_header = header
