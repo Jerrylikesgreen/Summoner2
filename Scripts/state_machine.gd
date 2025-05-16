@@ -1,11 +1,14 @@
 class_name SummonBehaviorTree extends Node
+
+
+signal state_change(state:int)
+
+
 @onready var idle_behavior_tree: IdleBehaviorTree = %IdleBehaviorTree
 @onready var explore_behavior_tree: ExploreBehaviorTree = %ExploreBehaviorTree
 
-
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
-signal state_change(state:int)
 
 
 func change_state(new_state)->void:

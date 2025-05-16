@@ -27,10 +27,25 @@ texture = ExtResource("1_vdaic")
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_aymgh")
 
-[node name="Label" type="Label" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true
-offset_left = -186.0
-offset_top = 8.0
-offset_right = -146.0
-offset_bottom = 31.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Item Lable"
 metadata/_edit_use_anchors_ = true
+
+[node name="Item Type" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="dd2" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="dd3" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2

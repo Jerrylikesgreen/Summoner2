@@ -3,6 +3,7 @@ class_name ItemManager
 
 @onready var item_body : ItemBody = %ItemBody
 @onready var label      : Label    = %Label        
+@onready var item_type_lable: Label = %"Item Type"
 
 enum ItemType { DEFAULT, MEAT, POTION }
 
@@ -13,8 +14,8 @@ const RESOURCE_POOL := {
 
 @export var item_type : ItemType = ItemType.DEFAULT
 	  
-
-
+var item_resource 
+var item_name
 var selected_resource : Resource                  
 
 func _ready() -> void:
@@ -23,9 +24,11 @@ func _ready() -> void:
 
 func _update_selected_resource() -> void:
 	selected_resource = RESOURCE_POOL.get(item_type)
-	var test = selected_resource.get_property_list()
+	item_name = selected_resource.name
+	item_body.selected_resource = selected_resource
+	
 	if label:
-		label.text = "Type: %s | Resource: %s" % [item_type, test]
+		label.text = "Type: %s | Resource: %s" % [item_type, item_name]
 
 
 func _on_taken()->void:

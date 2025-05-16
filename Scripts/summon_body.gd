@@ -1,13 +1,15 @@
 class_name SummonBody
 extends CharacterBody2D
-@onready var summon_manager: SummonManager = $".."
 
+
+@onready var summon_manager: SummonManager = $".."
+@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
 
 @onready var signal_lable: Label = %SignalLable
-@onready var label_2: Label = $"../PanelContainer/Label2"
+@onready var label_2: Label = %Label2
+
 
 @export var summon_resource: SummonResource
-@onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
 @export_enum("YELLOW", "GREEN", "BLUE") var SummonType     
 @export var arrive_epsilon  : float = 15.0      
 @export var target          : Vector2     
@@ -55,7 +57,7 @@ func _update_animation() -> void:
 # -------------------------------------------------------------
 
 func summon_explore_target() -> void:
-	var radius := 1000.0                  
+	var radius := 300.0                  
 	var angle  := randf() * TAU
 	var offset := Vector2(cos(angle), sin(angle)) * randf() * radius
 	target = position + offset

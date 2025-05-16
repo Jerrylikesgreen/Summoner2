@@ -1,10 +1,12 @@
 class_name SummonManager extends Node2D
 @onready var state_lable: Label = %StateLabel
-@onready var data_lable: Label = $PanelContainer/Data
+@onready var data_lable: Label = %Data
+@onready var label: Label = %Label
+@onready var detection_lable: Label = %DetectionLable
 
 @onready var summon_body:  = $SummonBody
-@onready var label: Label = %Label
 @onready var summon_behavior_tree: SummonBehaviorTree = %SummonBehaviorTree
+
 var summon_name:String
 
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
@@ -20,7 +22,9 @@ func _process(_delta: float) -> void:
 
 
 func _on_vision_body_entered(body: Node2D) -> void:
-	label.set_text(str(body))
+	var test = body.selected_resource.name
+	label.set_text(test)
+
 
 func stop_movement()->void:
 	summon_body.velocity = Vector2.ZERO 
@@ -31,7 +35,8 @@ func move_to_body_entered(body_position:Vector2)->void:
 	label.set_text("move_to_body_entered")
 
 func _on_detection_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	label.set_text(str(body))
+	pass
+	
 
 
 func _on_summon_behavior_tree_state_change(state: int) -> void:
