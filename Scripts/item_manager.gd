@@ -1,20 +1,15 @@
 extends Node2D
 class_name ItemManager
 
-
-@onready var item_body : ItemBody = $ItemBody
-@onready var label      : Label    = $Label        
-
+@onready var item_body : ItemBody = %ItemBody
+@onready var label      : Label    = %Label        
 
 enum ItemType { DEFAULT, MEAT, POTION }
-
 
 const RESOURCE_POOL := {
 	ItemType.MEAT  : preload("res://Resources/meat_resource.tres"),
 	ItemType.POTION: preload("res://Resources/potion_resource.tres"),
 }
-
-
 
 @export var item_type : ItemType = ItemType.DEFAULT
 	  
@@ -23,16 +18,14 @@ const RESOURCE_POOL := {
 var selected_resource : Resource                  
 
 func _ready() -> void:
-	pass                 
+	pass  
 
-
-		
 
 func _update_selected_resource() -> void:
 	selected_resource = RESOURCE_POOL.get(item_type)
-	
+	var test = selected_resource.get_property_list()
 	if label:
-		label.text = "Type: %s | Resource: %s" % [item_type, selected_resource]
+		label.text = "Type: %s | Resource: %s" % [item_type, test]
 
 
 func _on_taken()->void:

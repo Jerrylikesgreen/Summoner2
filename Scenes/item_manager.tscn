@@ -11,21 +11,26 @@ size = Vector2(12, 12)
 script = ExtResource("1_ffe1k")
 
 [node name="ItemBody" type="RigidBody2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 16
 collision_mask = 3
 gravity_scale = 0.0
 script = ExtResource("2_xhjot")
 
 [node name="ItemSprite" type="Sprite2D" parent="ItemBody"]
+unique_name_in_owner = true
 position = Vector2(-5.96046e-08, -5.96046e-08)
 scale = Vector2(0.096, 0.096)
 texture = ExtResource("1_vdaic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBody"]
+unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_aymgh")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 133.0
-offset_top = 79.0
-offset_right = 173.0
-offset_bottom = 102.0
+unique_name_in_owner = true
+offset_left = -186.0
+offset_top = 8.0
+offset_right = -146.0
+offset_bottom = 31.0
+metadata/_edit_use_anchors_ = true

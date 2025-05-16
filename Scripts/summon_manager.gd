@@ -1,19 +1,22 @@
 class_name SummonManager extends Node2D
 @onready var state_lable: Label = %StateLabel
+@onready var data_lable: Label = $PanelContainer/Data
 
 @onready var summon_body:  = $SummonBody
 @onready var label: Label = %Label
 @onready var summon_behavior_tree: SummonBehaviorTree = %SummonBehaviorTree
-
+var summon_name:String
 
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
 func _ready() -> void:
 	summon_body.summon_type() 
 	summon_behavior_tree.change_state(0)
+	
 
 func _process(_delta: float) -> void:
 	state_lable.set_text(str(current_state))
+	data_lable.set_text(summon_name)
 
 
 func _on_vision_body_entered(body: Node2D) -> void:

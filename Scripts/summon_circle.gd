@@ -85,5 +85,6 @@ func spawn_summon() -> void:
 	all_summons[id] = spawn
 	spawn.modulate = color_summon()
 	spawn.position = summon_target_position
+	spawn.summon_name = Globals.data.summon_name
 	
 	return

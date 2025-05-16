@@ -6,12 +6,18 @@ extends CharacterBody2D
 @onready var signal_lable: Label = %SignalLable
 @onready var label_2: Label = $"../PanelContainer/Label2"
 
-
+@export var summon_resource: SummonResource
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
-@export_enum("YELLOW", "GREEN", "BLUE") var SummonType
-@export var speed           : float = 50.0      
+@export_enum("YELLOW", "GREEN", "BLUE") var SummonType     
 @export var arrive_epsilon  : float = 15.0      
 @export var target          : Vector2     
+
+
+func _ready() -> void:
+	summon_resource.speed
+	match SummonType:
+		0:
+			summon_resource.speed + 25.0
 
 func _process(delta: float) -> void:
 	label_2.set_text(str(target))
@@ -35,7 +41,7 @@ func _move_towards_target() -> void:
 		velocity = Vector2.ZERO        
 		return
 	var dir := (target - position).normalized()
-	velocity = dir * speed
+	velocity = dir * summon_resource.speed
 				  
 
 

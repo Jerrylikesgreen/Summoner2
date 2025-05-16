@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SummonResource" load_steps=2 format=3 uid="uid://b4i6hi6pt0jjr"]
+
+[ext_resource type="Script" uid="uid://dt8pawdgn58pw" path="res://Scripts/summon_resource_script.gd" id="1_1ls3o"]
+
+[resource]
+script = ExtResource("1_1ls3o")
+speed = 50
+health = 100
+strenght = 100
