@@ -12,6 +12,7 @@ script = ExtResource("1_ffe1k")
 
 [node name="ItemBody" type="RigidBody2D" parent="."]
 unique_name_in_owner = true
+z_index = 4
 collision_layer = 16
 collision_mask = 3
 gravity_scale = 0.0
@@ -48,6 +49,19 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="dd3" type="Label" parent="GridContainer"]
+[node name="sprite_label" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "sprite_label"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="position - Item" type="Label" parent="GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="position - Item2" type="Label" parent="GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2

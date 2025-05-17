@@ -42,8 +42,8 @@ func _on_explore_timer_timeout() -> void:
 
 
 func _on_wait_timer_timeout() -> void:
-	pass
-	#if current_state == 0:
-	#	change_state(1)
-	#else:
-	#	return
+
+	if current_state == 2:
+		change_state(1)
+	else:
+		return

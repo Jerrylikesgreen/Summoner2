@@ -1,4 +1,5 @@
 class_name player_body extends CharacterBody2D
+@onready var label: Label = $"../Label"
 
 
 
@@ -20,6 +21,8 @@ func check_if_moving()-> void:
 func get_input():
 	var input_direction = Input.get_vector("Left", "Right", "Up", "Down")
 	velocity = input_direction * speed
+	var text = str(position)
+	label.set_text(text)
 
 func _physics_process(delta):
 	get_input()

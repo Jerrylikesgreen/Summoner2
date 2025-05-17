@@ -92,7 +92,7 @@ radius = 2.0
 height = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uawbc"]
-radius = 175.73
+radius = 55.0364
 
 [node name="SummonManager" type="Node2D"]
 script = ExtResource("1_h01js")
@@ -154,7 +154,6 @@ shape = SubResource("CircleShape2D_uawbc")
 
 [node name="LableContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -165,49 +164,59 @@ size_flags_vertical = 3
 
 [node name="Label2" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Lable2"
 
 [node name="Data" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "DATA"
 
 [node name="StateLabel" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "State Lable"
 
 [node name="SignalLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Signal Lable"
 script = ExtResource("8_ll5sk")
 
 [node name="DetectionLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Detection Lable"
 
 [node name="MovingTo" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="TLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "TLable"
 
 [node name="DistanceToTarget" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="TargetPosition" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [connection signal="state_change" from="SummonBehaviorTree" to="." method="_on_summon_behavior_tree_state_change"]

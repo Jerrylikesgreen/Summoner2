@@ -3,6 +3,7 @@ class_name SummonManager extends Node2D
 @onready var data_lable: Label = %Data
 @onready var detection_lable: Label = %DetectionLable
 @onready var moving_to: Label = %MovingTo
+@onready var idle: Label = $LableContainer/Idle
 
 @onready var summon_body: SummonBody = %SummonBody
 

@@ -11,26 +11,30 @@ signal on_idle_too_long
 @onready var moving_to: Label = %MovingTo
 @onready var signal_lable: Label = %SignalLable
 @onready var label_2: Label = %Label2
+@onready var idle: Label = $"../LableContainer/Idle"
+@onready var idle_time_lable: Label = $"../LableContainer/idle_time"
 
 
 @export var summon_resource: SummonResource
 @export_enum("YELLOW", "GREEN", "BLUE") var SummonType     
-@export var arrive_epsilon  : float = 20.0      
+@export var arrive_epsilon  : float = 10.0      
 @export var target          : Vector2     
-const IDLE_TIMEOUT_SEC := 0.33  # â 20 frames at 60 FPS
+const IDLE_TIMEOUT_SEC := 0.50  # â 20 frames at 60 FPS
 var idle_time := 0.0
-
+var wait_time = 0
 
 
 func _ready() -> void:
+	summon_resource = summon_resource.duplicate()
 	summon_resource.speed
 	match SummonType:
 		0:
-			summon_resource.speed + 25.0
+			summon_resource.speed += 25.0
 
 func _process(delta: float) -> void:
 	label_2.set_text(str(target))
 	t_lable.set_text(str(idle_time))
+
 	
 	
 
@@ -54,16 +58,16 @@ func _physics_process(delta: float) -> void:
 # -------------------------------------------------------------
 
 func _move_towards_target() -> void:
-	var distance_to_target_text = str(position.distance_to(target))
-	distance_to_target.set_text(distance_to_target_text)
-	
-	if position.distance_to(target) <= arrive_epsilon:
-		moving_to.set_text("Is at target")
-		velocity = Vector2.ZERO        
-	var dir := (target - position).normalized()
-	velocity = dir * summon_resource.speed
-	moving_to.set_text("moving to target")
-				  
+	var dist := position.distance_to(target)
+	distance_to_target.text = str(dist)
+
+	if dist <= arrive_epsilon:
+		moving_to.text = "At target"
+		velocity = Vector2.ZERO
+		return
+
+	moving_to.text = "Moving to target"
+	velocity = (target - position).normalized() * summon_resource.speed
 
 
 func _update_animation() -> void:
@@ -77,10 +81,12 @@ func _update_animation() -> void:
 
 func summon_explore_target() -> void:
 	var radius := 300.0                  
-	var angle  := randf() * TAU
+	var root := sqrt(randf()) * radius
+	var angle := randf() * TAU
 	var offset := Vector2(cos(angle), sin(angle)) * randf() * radius
-	target = position + offset
-	
+	target = position + Vector2(cos(angle), sin(angle)) * root
+
+
 func summon_type() -> void:
 	match get_modulate():
 		Color.YELLOW:
