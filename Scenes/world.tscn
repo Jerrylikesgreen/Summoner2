@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://ciwoi16taaxmj"]
+[gd_scene load_steps=8 format=4 uid="uid://ciwoi16taaxmj"]
 
 [ext_resource type="Texture2D" uid="uid://dsiv5g1mhi47k" path="res://PNG/Grass.png" id="1_emx41"]
 [ext_resource type="Script" uid="uid://dhnxo5b28v3cf" path="res://main.gd" id="1_o06y3"]
 [ext_resource type="PackedScene" uid="uid://dd3b6oin1jkaw" path="res://Scenes/summon_circle.tscn" id="1_pcvp0"]
-[ext_resource type="PackedScene" uid="uid://cpqx3xqwmbdfe" path="res://Scenes/debug.tscn" id="1_scul4"]
 [ext_resource type="PackedScene" uid="uid://b3v8sqt2ditei" path="res://Scenes/player.tscn" id="2_dlwip"]
-[ext_resource type="Script" uid="uid://bpdj4sq5x2jte" path="res://Scripts/debug.gd" id="2_pcvp0"]
-[ext_resource type="PackedScene" uid="uid://cwn2x0tb7pnnd" path="res://item_spawner.tscn" id="6_5ukr8"]
+[ext_resource type="PackedScene" uid="uid://cwn2x0tb7pnnd" path="res://Scenes/item_spawner.tscn" id="6_5ukr8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dlwip"]
 texture = ExtResource("1_emx41")
@@ -29,24 +27,6 @@ tile_set = SubResource("TileSet_ejll3")
 [node name="Player" parent="." instance=ExtResource("2_dlwip")]
 position = Vector2(226, 109)
 
-[node name="Debug" parent="Player" instance=ExtResource("1_scul4")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_pcvp0")
-
-[node name="DebugLabel" type="Label" parent="Player/Debug"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="SummonCircle" parent="." instance=ExtResource("1_pcvp0")]
@@ -54,6 +34,7 @@ grow_vertical = 2
 [node name="ItemSpawner" parent="." instance=ExtResource("6_5ukr8")]
 
 [node name="Label" type="Label" parent="ItemSpawner"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "dddd"

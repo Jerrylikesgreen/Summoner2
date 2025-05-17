@@ -1,12 +1,15 @@
 class_name ItemSpawner extends Node2D
 
-@onready var spawn_container: Node2D = %SpawnContainer
+
+@onready var spawn_container: Control = %spawn_container
+
+
 
 
 @onready var label: Label = $Label
 
-const ITEM_MANAGER = preload("res://Scenes/item_manager.tscn")
 
+const ITEM_MANAGER = preload("res://Scenes/item_manager.tscn")
 
 @onready var spawn_location_1: Polygon2D = %SpawnLocation
 @onready var spawn_location_2: Polygon2D = %SpawnLocation2

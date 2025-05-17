@@ -44,7 +44,7 @@ func _on_action_behavior_tree_action_behavior_started() -> void:
 func _on_detection_body_entered(body: Node2D) -> void:
 	summon_behavior_tree.change_state(2)
 	var test = body.name
-	var text = to_local(body.global_position)
+	var text = str(to_local(body.global_position))
 	summon_body.target = to_local(body.global_position)
 	move_to_body_entered()
 	detection_lable.set_text(text)

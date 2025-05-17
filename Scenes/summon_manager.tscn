@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dgaiyh6m7i7o8" path="res://Scripts/idle_behavior_tree.gd" id="3_ep7dd"]
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="4_ep7dd"]
 [ext_resource type="Script" uid="uid://cjn7u4ofgmk8j" path="res://Scripts/explore_behavior_tree.gd" id="4_ll5sk"]
-[ext_resource type="Script" uid="uid://dxq583pa70lmn" path="res://Scenes/action_behavior_tree.gd" id="5_duy7s"]
+[ext_resource type="Script" uid="uid://dxq583pa70lmn" path="res://Scripts/action_behavior_tree.gd" id="5_duy7s"]
 [ext_resource type="Resource" uid="uid://b4i6hi6pt0jjr" path="res://Resources/summon_resource.tres" id="6_fhg23"]
 [ext_resource type="Script" uid="uid://ohfxn6tv3ije" path="res://Scripts/signal_lable.gd" id="8_ll5sk"]
 
@@ -154,6 +154,7 @@ shape = SubResource("CircleShape2D_uawbc")
 
 [node name="LableContainer" type="GridContainer" parent="."]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
