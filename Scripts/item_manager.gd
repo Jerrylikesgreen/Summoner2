@@ -7,12 +7,6 @@ class_name ItemManager extends Node2D
 ## On ready variables 
 @onready var item_body : ItemBody = %ItemBody
 ## Refrence to Item Body 
-@onready var label: Label = %Label
-@onready var item_type_lable: Label = %"Item Type"
-@onready var selected_resource_lable: Label = %selected_resource_lable
-@onready var label_2: Label = %Label2
-@onready var position___item: Label = %"position - Item"
-@onready var position___item_2: Label = %"position - Item2"
 
 
 @export var spawn_position_node_refrence: Node
@@ -36,8 +30,7 @@ var selected_resource : Resource
 var spawn_container: Node2D 
 
 func _ready() -> void:
-	selected_resource_lable.set_text(str(selected_resource))
-	selected_resource_lable.set_text(str(item_type))
+
 	
 	
 	

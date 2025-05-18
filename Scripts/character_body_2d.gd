@@ -5,15 +5,15 @@ class_name PlayerBody
 extends CharacterBody2D
 
 # ─── Nodes ───────────────────────────────────────────────────────────────
-@onready var lbl_pos   : Label            = $"../Label"
+
 @onready var camera    : Camera2D         = $Camera2D
 @onready var sprite    : AnimatedSprite2D = $AnimatedSprite2D
-@onready var summon_ui : SummonCircle     = $"../SummonCircle"
+@onready var summon_ui: SummonCircle = %SummonCircle
+@onready var label: Label = %Label
 
 # ─── Exported  ───────────────────────────────────────────────────────────
 @export var speed          : float = 100.0
 @export var camera_locked  : bool  = false   # toggled by Summon key
-
 @export_enum("North", "South", "East", "West")
 var player_direction : int = 2   # East by default
 
@@ -57,7 +57,7 @@ func _handle_input() -> void:
 	elif dir.y > 0.0:
 		player_direction = DIR_S
 
-	lbl_pos.text = str(global_position)
+	label.text = str(global_position)
 
 func _handle_movement() -> void:
 	if velocity.is_zero_approx():

@@ -6,6 +6,7 @@
 script = ExtResource("1_u5r62")
 
 [node name="ItemSpawner" type="Label" parent="."]
+unique_name_in_owner = true
 offset_left = 215.0
 offset_top = 83.0
 offset_right = 319.0

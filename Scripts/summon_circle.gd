@@ -4,7 +4,6 @@ class_name SummonCircle extends Node2D
 
 @onready var spawn_container: Node2D = %SpawnContainer
 
-
 signal summoning(bool)
 enum SummonColor { YELLOW, GREEN, BLUE }
 @export var summon_color : SummonColor = SummonColor.YELLOW
@@ -85,7 +84,7 @@ func color_summon() -> Color:
 func spawn_summon() -> void:
 	var spawn  = SUMMONS.instantiate()
 	var id = generate_unique_id() 
-	spawn_container.add_child(spawn)
+	get_parent().add_child(spawn)
 	all_summons[id] = spawn
 	spawn.modulate = color_summon()
 	spawn.set_position(summon_target_position)
