@@ -3,7 +3,7 @@ class_name SummonCircle extends Node2D
 @onready var icon: Sprite2D = $Icon
 @onready var spawn_container: Node2D = %SpawnContainer
 
-
+signal summoning(bool)
 enum SummonColor { YELLOW, GREEN, BLUE }
 @export var summon_color : SummonColor = SummonColor.YELLOW
 @export var _is_summoning: bool = false
@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 
 func get_input() -> void:
 	if Input.is_action_pressed("Summon"):
+		emit_signal("summoning", true)
 		icon.set_visible(true)
 		color_summon_circle() 
 		summon_target_position = get_global_mouse_position()
@@ -48,6 +49,7 @@ func get_input() -> void:
 	else:
 		icon.set_visible(false)
 		_is_summoning = false
+		emit_signal("summoning", false)
 		return
 	if Input.is_action_just_pressed("Click"):
 		if _is_summoning == true:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3v8sqt2ditei"]
+[gd_scene load_steps=16 format=3 uid="uid://b3v8sqt2ditei"]
 
 [ext_resource type="Texture2D" uid="uid://daunm3s6tj2vq" path="res://PNG/BaseBody-Idle-Sheet.png" id="1_kelma"]
 [ext_resource type="Script" uid="uid://omy75l7rqblf" path="res://Scripts/character_body_2d.gd" id="1_xa75v"]
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="2_y8w33"]
+[ext_resource type="PackedScene" uid="uid://dd3b6oin1jkaw" path="res://Scenes/summon_circle.tscn" id="4_vgqql"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8w33"]
 atlas = ExtResource("1_kelma")
@@ -104,3 +105,7 @@ shape = SubResource("CapsuleShape2D_c31lq")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="SummonCircle" parent="." instance=ExtResource("4_vgqql")]
+
+[connection signal="summoning" from="SummonCircle" to="CharacterBody2D" method="_on_summon_circle_summoning"]

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://ciwoi16taaxmj"]
+[gd_scene load_steps=9 format=4 uid="uid://ciwoi16taaxmj"]
 
 [ext_resource type="Texture2D" uid="uid://dsiv5g1mhi47k" path="res://PNG/Grass.png" id="1_emx41"]
 [ext_resource type="Script" uid="uid://dhnxo5b28v3cf" path="res://main.gd" id="1_o06y3"]
-[ext_resource type="PackedScene" uid="uid://dd3b6oin1jkaw" path="res://Scenes/summon_circle.tscn" id="1_pcvp0"]
 [ext_resource type="PackedScene" uid="uid://b3v8sqt2ditei" path="res://Scenes/player.tscn" id="2_dlwip"]
 [ext_resource type="PackedScene" uid="uid://cwn2x0tb7pnnd" path="res://Scenes/item_spawner.tscn" id="6_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://dyrchiuovkccc" path="res://icon.svg" id="6_k7acu"]
@@ -31,8 +30,6 @@ tile_set = SubResource("TileSet_ejll3")
 
 [node name="Player" parent="." instance=ExtResource("2_dlwip")]
 position = Vector2(0, -2)
-
-[node name="SummonCircle" parent="." instance=ExtResource("1_pcvp0")]
 
 [node name="SpawnContainer" type="Node2D" parent="."]
 unique_name_in_owner = true

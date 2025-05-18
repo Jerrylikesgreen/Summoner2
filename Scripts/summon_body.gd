@@ -2,18 +2,20 @@ class_name SummonBody
 extends CharacterBody2D
 
 signal on_idle_too_long
-@onready var t_lable: Label = $"../LableContainer/TLable"
-@onready var distance_to_target: Label = %DistanceToTarget
-@onready var target_position: Label = %TargetPosition
 
 @onready var summon_manager: SummonManager = $".."
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
-@onready var moving_to: Label = %MovingTo
+
+
 @onready var signal_lable: Label = %SignalLable
 @onready var label_2: Label = %Label2
 @onready var idle: Label = $"../LableContainer/Idle"
 @onready var idle_time_lable: Label = $"../LableContainer/idle_time"
-
+@onready var data: Label = %Data
+@onready var state_label: Label = %StateLabel
+@onready var detection_lable: Label = %DetectionLable
+@onready var moving_to: Label = %MovingTo
+@onready var label: Label = %Label
 
 @export var summon_resource: SummonResource
 @export_enum("YELLOW", "GREEN", "BLUE") var SummonType     
@@ -33,7 +35,6 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	label_2.set_text(str(target))
-	t_lable.set_text(str(idle_time))
 
 	
 	
@@ -59,7 +60,6 @@ func _physics_process(delta: float) -> void:
 
 func _move_towards_target() -> void:
 	var dist := position.distance_to(target)
-	distance_to_target.text = str(dist)
 
 	if dist <= arrive_epsilon:
 		moving_to.text = "At target"

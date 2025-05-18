@@ -7,12 +7,14 @@ class_name ItemManager extends Node2D
 ## On ready variables 
 @onready var item_body : ItemBody = %ItemBody
 ## Refrence to Item Body 
-@onready var label      : Label    = %Label     
-## Refrence to lable 
+@onready var label: Label = %Label
 @onready var item_type_lable: Label = %"Item Type"
 @onready var selected_resource_lable: Label = %selected_resource_lable
-@onready var s_prite_lable: Label = %SPriteLable
-@onready var position___item: Label = %"GridContainer/position - Item"
+@onready var label_2: Label = %Label2
+@onready var position___item: Label = %"position - Item"
+@onready var position___item_2: Label = %"position - Item2"
+
+
 @export var spawn_position_node_refrence: Node
 ## Item Type Enum DEFAULT:0, MEAT:1, POTION:2  
 

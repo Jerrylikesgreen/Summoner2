@@ -164,59 +164,49 @@ size_flags_vertical = 3
 
 [node name="Label2" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Lable2"
 
 [node name="Data" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "DATA"
 
 [node name="StateLabel" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "State Lable"
 
 [node name="SignalLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Signal Lable"
 script = ExtResource("8_ll5sk")
 
 [node name="DetectionLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "Detection Lable"
 
 [node name="MovingTo" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="TLable" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "TLable"
 
 [node name="DistanceToTarget" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="TargetPosition" type="Label" parent="LableContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [connection signal="state_change" from="SummonBehaviorTree" to="." method="_on_summon_behavior_tree_state_change"]
