@@ -7,15 +7,6 @@ signal on_idle_too_long
 @onready var animated_sprite: AnimatedSprite2D = %AnimatedSprite
 
 
-@onready var signal_lable: Label = %SignalLable
-@onready var label_2: Label = %Label2
-@onready var idle: Label = $"../LableContainer/Idle"
-@onready var idle_time_lable: Label = $"../LableContainer/idle_time"
-@onready var data: Label = %Data
-@onready var state_label: Label = %StateLabel
-@onready var detection_lable: Label = %DetectionLable
-@onready var moving_to: Label = %MovingTo
-@onready var label: Label = %Label
 
 @export var summon_resource: SummonResource
 @export_enum("YELLOW", "GREEN", "BLUE") var SummonType     
@@ -34,7 +25,7 @@ func _ready() -> void:
 			summon_resource.speed += 25.0
 
 func _process(delta: float) -> void:
-	label_2.set_text(str(target))
+	pass
 
 	
 	
@@ -62,11 +53,9 @@ func _move_towards_target() -> void:
 	var dist := position.distance_to(target)
 
 	if dist <= arrive_epsilon:
-		moving_to.text = "At target"
 		velocity = Vector2.ZERO
 		return
 
-	moving_to.text = "Moving to target"
 	velocity = (target - position).normalized() * summon_resource.speed
 
 
@@ -99,4 +88,3 @@ func summon_type() -> void:
 
 func _on_explore_behavior_tree_explore_behavior_started() -> void:
 	summon_explore_target()
-	signal_lable.set_text("settiing explore target")

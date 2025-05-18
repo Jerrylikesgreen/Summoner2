@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://57gcvfrcnsp3"]
+[gd_scene load_steps=21 format=3 uid="uid://57gcvfrcnsp3"]
 
 [ext_resource type="Script" uid="uid://dwyl60h0e4ehq" path="res://Scripts/summon_manager.gd" id="1_h01js"]
 [ext_resource type="Script" uid="uid://ctfbg7u6rwktc" path="res://Scripts/summon_body.gd" id="2_30jtd"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="4_ep7dd"]
 [ext_resource type="Script" uid="uid://cjn7u4ofgmk8j" path="res://Scripts/explore_behavior_tree.gd" id="4_ll5sk"]
 [ext_resource type="Script" uid="uid://dxq583pa70lmn" path="res://Scripts/action_behavior_tree.gd" id="5_duy7s"]
-[ext_resource type="Resource" uid="uid://b4i6hi6pt0jjr" path="res://Resources/summon_resource.tres" id="6_fhg23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2e84q"]
 atlas = ExtResource("3_d57ri")
@@ -125,7 +124,6 @@ unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 31
 script = ExtResource("2_30jtd")
-summon_resource = ExtResource("6_fhg23")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="SummonBody"]
 unique_name_in_owner = true
@@ -157,6 +155,5 @@ shape = SubResource("CircleShape2D_uawbc")
 [connection signal="explore_behavior_started" from="SummonBehaviorTree/ExploreBehaviorTree" to="SummonBody" method="_on_explore_behavior_tree_explore_behavior_started"]
 [connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="SummonBehaviorTree" method="_on_explore_timer_timeout"]
 [connection signal="action_behavior_started" from="SummonBehaviorTree/ActionBehaviorTree" to="." method="_on_action_behavior_tree_action_behavior_started"]
-[connection signal="on_idle_too_long" from="SummonBody" to="." method="_on_summon_body_on_idle_too_long"]
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_entered" from="Detection" to="SummonBody" method="_on_detection_body_entered"]

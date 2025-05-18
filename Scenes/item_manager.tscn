@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cipscfb5agk83"]
+[gd_scene load_steps=4 format=3 uid="uid://cipscfb5agk83"]
 
 [ext_resource type="Script" uid="uid://c3n8ro0ivhf6f" path="res://Scripts/item_manager.gd" id="1_ffe1k"]
-[ext_resource type="Texture2D" uid="uid://dyrchiuovkccc" path="res://icon.svg" id="1_vdaic"]
 [ext_resource type="Script" uid="uid://cvoe4diye1mbg" path="res://Scripts/item_body.gd" id="2_xhjot"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aymgh"]
@@ -22,7 +21,6 @@ script = ExtResource("2_xhjot")
 unique_name_in_owner = true
 position = Vector2(-5.96046e-08, -5.96046e-08)
 scale = Vector2(0.096, 0.096)
-texture = ExtResource("1_vdaic")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBody"]
 unique_name_in_owner = true

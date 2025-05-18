@@ -1,7 +1,9 @@
 class_name SummonCircle extends Node2D
 
 @onready var icon: Sprite2D = $Icon
+
 @onready var spawn_container: Node2D = %SpawnContainer
+
 
 signal summoning(bool)
 enum SummonColor { YELLOW, GREEN, BLUE }
