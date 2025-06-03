@@ -18,11 +18,11 @@ var wait_time = 0
 
 
 func _ready() -> void:
-	summon_resource = summon_resource.duplicate()
-	summon_resource.speed
-	match SummonType:
-		0:
-			summon_resource.speed += 25.0
+       summon_resource = summon_resource.duplicate()
+       summon_type()  # Initialize SummonType based on current modulate
+       match SummonType:
+               0:
+                       summon_resource.speed += 25.0
 
 func _process(delta: float) -> void:
 	pass
