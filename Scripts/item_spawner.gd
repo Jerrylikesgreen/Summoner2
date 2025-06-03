@@ -5,7 +5,7 @@ class_name ItemSpawner extends Node2D
 
 @onready var apple_tree: TileMapLayer = %AppleTree
 
-@onready var item_spawner_lable: Label = %ItemSpawner
+@onready var item_spawner_label: Label = %ItemSpawner
 
 
 
@@ -20,7 +20,7 @@ var spawn_location = str(apple_tree)
 
 
 func _ready() -> void:
-	item_spawner_lable.set_text(spawn_location)
+        item_spawner_label.set_text(spawn_location)
 
 	pass # Replace with function body.
 
