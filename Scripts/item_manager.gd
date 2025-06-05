@@ -6,7 +6,7 @@ class_name ItemManager extends Node2D
 
 ## On ready variables 
 @onready var item_body : ItemBody = %ItemBody
-## Refrence to Item Body 
+## Reference to Item Body
 
 
 @export var spawn_position_node_refrence: Node
@@ -20,9 +20,9 @@ const RESOURCE_POOL := {
 	ItemType.POTION: preload("res://Resources/potion_resource.tres"),
 	ItemType.APPLE: preload("res://Resources/apple_resource.tres"),
 }
-## item type variable det at defult. can be changed by calling ItemType enum. 
+## item type variable set at default. can be changed by calling ItemType enum. 
 @export var item_type : ItemType = ItemType.DEFAULT
-## item type variable det at defult. can be changed by calling ItemType enum.
+## item type variable set at default. can be changed by calling ItemType enum.
 ## var holding item resource. 
 
 

@@ -1,14 +1,22 @@
 class_name ItemSpawner extends Node2D
 
 
+@onready var ground_layer: TileMapLayer = $"../GroundLayer"
+
+@onready var apple_tree: TileMapLayer = %AppleTree
 
 
-const ITEM_SCENE         = preload("res://Scenes/item_manager.tscn")
-const ITEM_TYPE          = 3                                 # your “apple” ID
 
 
-#-------------------------------[Ready/Start-Up]---------------------------------------------------------------------
-@onready var apple_layer : TileMapLayer = %AppleTree       
+
+@export var target_path : NodePath
+
+const ITEM_MANAGER = preload("res://Scenes/item_manager.tscn")
+
+var spawn_location = str(apple_tree)
+
+
+
 
 func _ready() -> void:
 	var tile_size : Vector2 = apple_layer.tile_set.tile_size

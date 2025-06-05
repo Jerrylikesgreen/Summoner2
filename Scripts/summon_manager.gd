@@ -10,7 +10,7 @@ var summon_name:String
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
 func _ready() -> void:
-	pass
+       summon_body.summon_type()
 	
 
 func _process(_delta: float) -> void:
