@@ -10,7 +10,7 @@ var summon_name:String
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
 func _ready() -> void:
-	summon_body.summon_type  
+	pass
 	
 
 func _process(_delta: float) -> void:
@@ -37,8 +37,6 @@ func _on_action_behavior_tree_action_behavior_started() -> void:
 
 func _on_detection_body_entered(body: Node2D) -> void:
 	summon_behavior_tree.change_state(2)
-	var test = body.name
-	var text = str(to_local(body.global_position))
 	summon_body.target = to_local(body.global_position)
 	move_to_body_entered()
 	pass # Replace with function body.

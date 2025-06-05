@@ -91,6 +91,7 @@ script = ExtResource("1_fkybt")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
+collision_mask = 56
 script = ExtResource("1_xa75v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]

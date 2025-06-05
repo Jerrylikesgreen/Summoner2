@@ -1,8 +1,8 @@
 class_name ItemManager extends Node2D 
 
 
-@onready var target_position: Label = %"GridContainer/position - Item2"
-@onready var sprite_label: Label = %sprite_label
+
+
 
 ## On ready variables 
 @onready var item_body : ItemBody = %ItemBody
@@ -40,7 +40,6 @@ func _ready() -> void:
 func _update_selected_resource() -> void:
 	selected_resource = RESOURCE_POOL.get(item_type)
 	item_body.selected_resource = selected_resource
-	sprite_label.set_text(str(item_type))
 	item_body._apply_visuals()
 
 

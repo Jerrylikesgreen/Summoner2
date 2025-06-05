@@ -26,14 +26,14 @@ func _ready() -> void:
 	_load_data()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 
 #----------------------------------------------[SETTERS]-------------------------------------------------------------
-func set_is_player_moving(bool, player_position:Vector2) -> void:
-	_is_player_moving = bool
+func set_is_player_moving(bool_value, player_position:Vector2) -> void:
+	_is_player_moving = bool_value
 	emit_signal("debug_signal", "set_is_player_moving", str(_is_player_moving))
 	emit_signal("global_player_position_signal", player_position)
 

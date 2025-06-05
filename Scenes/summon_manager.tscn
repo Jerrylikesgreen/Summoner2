@@ -123,7 +123,7 @@ script = ExtResource("5_duy7s")
 [node name="SummonBody" type="CharacterBody2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 2
-collision_mask = 31
+collision_mask = 63
 script = ExtResource("2_30jtd")
 summon_resource = ExtResource("6_fhg23")
 

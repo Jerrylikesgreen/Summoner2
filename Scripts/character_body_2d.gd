@@ -29,14 +29,14 @@ const ZOOM_MIN  := 0.5
 const ZOOM_MAX  := 3.0
 
 # ─── Internal helpers ────────────────────────────────────────────────────
-func _apply_zoom(sign: int) -> void:
-	var z := camera.zoom + Vector2.ONE * ZOOM_STEP * sign
+func _apply_zoom(s: int) -> void:
+	var z := camera.zoom + Vector2.ONE * ZOOM_STEP * s
 	z.x = clampf(z.x, ZOOM_MIN, ZOOM_MAX)
 	z.y = z.x                 # keep square pixels
 	camera.zoom = z
 
 # ─── Main physics loop ───────────────────────────────────────────────────
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_handle_input()
 	_handle_movement()
 

@@ -1,44 +1,33 @@
 class_name ItemSpawner extends Node2D
 
 
-@onready var ground_layer: TileMapLayer = $"../GroundLayer"
-
-@onready var apple_tree: TileMapLayer = %AppleTree
-
-@onready var item_spawner_lable: Label = %ItemSpawner
 
 
+const ITEM_SCENE         = preload("res://Scenes/item_manager.tscn")
+const ITEM_TYPE          = 3                                 # your “apple” ID
 
 
-@export var target_path : NodePath
-
-const ITEM_MANAGER = preload("res://Scenes/item_manager.tscn")
-
-var spawn_location = str(apple_tree)
-
-
-
+#-------------------------------[Ready/Start-Up]---------------------------------------------------------------------
+@onready var apple_layer : TileMapLayer = %AppleTree       
 
 func _ready() -> void:
-	item_spawner_lable.set_text(spawn_location)
+	var tile_size : Vector2 = apple_layer.tile_set.tile_size
+	var half_tile : Vector2 = tile_size * 0.5
 
-	pass # Replace with function body.
+	for cell in apple_layer.get_used_cells():                
+		#   grid → layer-local pixels → world pixels
+		var local_pos  : Vector2 = Vector2(cell) * tile_size + half_tile
+		var world_pos  : Vector2 = apple_layer.to_global(local_pos)
 
-
-
-
-#func spawn_item(item_type:int) -> void:
-#	var item_instance = ITEM_MANAGER.instantiate()
-#	var item_position: Vector2
-#	add_child(item_instance)
-#	item_position = spawn_location
-#	item_instance.position = item_position
-#	item_instance.apply_item_type(item_type)
-#	item_instance.spawn_container = spawn_containerRef
-#	item_spawner.set_text(str(item_type))
+		_spawn_item(world_pos)
 
 
 
-	
-	
+#----------------------------------------------[Class Methods]-------------------------------------------
+func _spawn_item(world_pos: Vector2) -> void:
+	var inst = ITEM_SCENE.instantiate()
+	add_child(inst)                       # keep items grouped under this node
+	inst.global_position = world_pos
+	inst.apply_item_type(ITEM_TYPE)
+
 	

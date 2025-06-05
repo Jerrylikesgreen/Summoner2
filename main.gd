@@ -5,7 +5,7 @@ class_name World extends Node
 func _ready():
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func get_summon_node():

@@ -35,7 +35,7 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 39
 custom_data_layer_0/name = "AppleSpawn"
 custom_data_layer_0/type = 1
-sources/0 = SubResource("TileSetAtlasSource_iw27f")
+sources/3 = SubResource("TileSetAtlasSource_iw27f")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_wqkje")
@@ -79,7 +79,7 @@ unique_name_in_owner = true
 
 [node name="AppleTree" type="TileMapLayer" parent="ObjectsLayer"]
 unique_name_in_owner = true
-tile_map_data = PackedByteArray("AAAbAAMAAAAAAAAAAAAEAAwAAAAAAAAAAAADAAEAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAbAAMAAwAAAAAAAAAEAAwAAwAAAAAAAAADAAEAAwAAAAAAAAA=")
 tile_set = SubResource("TileSet_71pa8")
 
 [node name="Player" parent="." instance=ExtResource("6_0f350")]

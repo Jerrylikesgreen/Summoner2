@@ -2,7 +2,6 @@ class_name SummonCircle extends Node2D
 
 @onready var icon: Sprite2D = $Icon
 
-@onready var spawn_container: Node2D = %SpawnContainer
 
 signal summoning(bool)
 enum SummonColor { YELLOW, GREEN, BLUE }
@@ -18,7 +17,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	get_input()
 
 

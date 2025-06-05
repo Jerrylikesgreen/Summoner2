@@ -19,12 +19,11 @@ var wait_time = 0
 
 func _ready() -> void:
 	summon_resource = summon_resource.duplicate()
-	summon_resource.speed
 	match SummonType:
 		0:
 			summon_resource.speed += 25.0
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 	
@@ -72,7 +71,7 @@ func summon_explore_target() -> void:
 	var radius := 300.0                  
 	var root := sqrt(randf()) * radius
 	var angle := randf() * TAU
-	var offset := Vector2(cos(angle), sin(angle)) * randf() * radius
+	var _offset := Vector2(cos(angle), sin(angle)) * randf() * radius
 	target = position + Vector2(cos(angle), sin(angle)) * root
 
 
