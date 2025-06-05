@@ -2,7 +2,6 @@ class_name SummonManager extends Node2D
 
 
 @onready var summon_body: SummonBody = %SummonBody
-
 @onready var summon_behavior_tree: SummonBehaviorTree = %SummonBehaviorTree
 
 var summon_name:String
@@ -10,9 +9,9 @@ var summon_name:String
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
 func _ready() -> void:
-       summon_body.summon_type()
+	summon_body.summon_type()
 	
-
+	
 func _process(_delta: float) -> void:
 	pass
 

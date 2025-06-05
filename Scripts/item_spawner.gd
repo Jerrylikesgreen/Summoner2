@@ -3,7 +3,7 @@ class_name ItemSpawner extends Node2D
 
 @onready var ground_layer: TileMapLayer = $"../GroundLayer"
 
-@onready var apple_tree: TileMapLayer = %AppleTree
+@onready var apple_layer: TileMapLayer = %AppleTree
 
 
 
@@ -12,8 +12,6 @@ class_name ItemSpawner extends Node2D
 @export var target_path : NodePath
 
 const ITEM_MANAGER = preload("res://Scenes/item_manager.tscn")
-
-var spawn_location = str(apple_tree)
 
 
 
@@ -26,16 +24,15 @@ func _ready() -> void:
 		#   grid → layer-local pixels → world pixels
 		var local_pos  : Vector2 = Vector2(cell) * tile_size + half_tile
 		var world_pos  : Vector2 = apple_layer.to_global(local_pos)
-
-		_spawn_item(world_pos)
+		_spawn_item(world_pos, 3)
 
 
 
 #----------------------------------------------[Class Methods]-------------------------------------------
-func _spawn_item(world_pos: Vector2) -> void:
-	var inst = ITEM_SCENE.instantiate()
+func _spawn_item(world_pos: Vector2, spawn_type: int) -> void:
+	var inst = ITEM_MANAGER.instantiate()
 	add_child(inst)                       # keep items grouped under this node
 	inst.global_position = world_pos
-	inst.apply_item_type(ITEM_TYPE)
+	inst.apply_item_type(spawn_type)
 
 	

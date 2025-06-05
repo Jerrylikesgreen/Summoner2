@@ -7,10 +7,10 @@ extends RigidBody2D
 @onready var selected_resource: ItemResource        
 
 func apply_resource_to_item(resource: ItemResource) -> void:
-        if resource == null:
-                push_error("apply_resource_to_item received null")
-                return
-        #_apply_visuals()
+		if resource == null:
+				push_error("apply_resource_to_item received null")
+				return
+		#_apply_visuals()
 
 func _apply_visuals() -> void:
 	item_sprite.texture = selected_resource.icon

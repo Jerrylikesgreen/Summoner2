@@ -156,7 +156,6 @@ shape = SubResource("CircleShape2D_uawbc")
 [connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree/IdleBehaviorTree" method="_on_idle_wait_time_timeout"]
 [connection signal="explore_behavior_started" from="SummonBehaviorTree/ExploreBehaviorTree" to="SummonBody" method="_on_explore_behavior_tree_explore_behavior_started"]
 [connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="SummonBehaviorTree" method="_on_explore_timer_timeout"]
-[connection signal="action_behavior_started" from="SummonBehaviorTree/ActionBehaviorTree" to="." method="_on_action_behavior_tree_action_behavior_started"]
 [connection signal="on_idle_too_long" from="SummonBody" to="." method="_on_summon_body_on_idle_too_long"]
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_entered" from="Detection" to="SummonBody" method="_on_detection_body_entered"]
