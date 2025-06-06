@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
+Events="*res://Scripts/events.gd"
 
 [display]
 
@@ -29,6 +30,10 @@ window/stretch/mode="viewport"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+Objects="Obj that can be picked up"
 
 [input]
 

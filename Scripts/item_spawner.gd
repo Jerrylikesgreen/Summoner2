@@ -34,5 +34,3 @@ func _spawn_item(world_pos: Vector2, spawn_type: int) -> void:
 	add_child(inst)                       # keep items grouped under this node
 	inst.global_position = world_pos
 	inst.apply_item_type(spawn_type)
-
-	

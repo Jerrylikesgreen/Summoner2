@@ -1,6 +1,7 @@
 class_name SummonBody
 extends CharacterBody2D
 
+signal reached_target_position
 signal on_idle_too_long
 
 @onready var summon_manager: SummonManager = $".."
@@ -51,6 +52,7 @@ func _move_towards_target() -> void:
 
 	if dist <= arrive_epsilon:
 		velocity = Vector2.ZERO
+		emit_signal("reached_target_position")
 		return
 
 	velocity = (target - position).normalized() * summon_resource.speed

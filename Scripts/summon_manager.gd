@@ -1,10 +1,13 @@
 class_name SummonManager extends Node2D
 
+@onready var label: Label = $Label
 
 @onready var summon_body: SummonBody = %SummonBody
 @onready var summon_behavior_tree: SummonBehaviorTree = %SummonBehaviorTree
 
 var summon_name:String
+var current_target:Node2D
+
 
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
@@ -13,6 +16,7 @@ func _ready() -> void:
 	
 	
 func _process(_delta: float) -> void:
+	label.set_text(str(current_target))
 	pass
 
 func stop_movement()->void:
@@ -38,9 +42,14 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	summon_behavior_tree.change_state(2)
 	summon_body.target = to_local(body.global_position)
 	move_to_body_entered()
+	current_target = body
 	pass # Replace with function body.
 
 
 func _on_summon_body_on_idle_too_long() -> void:
 	summon_behavior_tree.change_state(1)
 	pass # Replace with function body.
+
+
+func _on_summon_body_reached_target_position() -> void:
+	print(current_target)

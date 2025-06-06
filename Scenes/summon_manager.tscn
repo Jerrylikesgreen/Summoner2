@@ -151,11 +151,16 @@ monitorable = false
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_uawbc")
 
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="state_change" from="SummonBehaviorTree" to="." method="_on_summon_behavior_tree_state_change"]
 [connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree" method="_on_wait_timer_timeout"]
 [connection signal="timeout" from="SummonBehaviorTree/IdleBehaviorTree/WaitTimer" to="SummonBehaviorTree/IdleBehaviorTree" method="_on_idle_wait_time_timeout"]
 [connection signal="explore_behavior_started" from="SummonBehaviorTree/ExploreBehaviorTree" to="SummonBody" method="_on_explore_behavior_tree_explore_behavior_started"]
 [connection signal="timeout" from="SummonBehaviorTree/ExploreBehaviorTree/ExploreTimer" to="SummonBehaviorTree" method="_on_explore_timer_timeout"]
 [connection signal="on_idle_too_long" from="SummonBody" to="." method="_on_summon_body_on_idle_too_long"]
+[connection signal="reached_target_position" from="SummonBody" to="." method="_on_summon_body_reached_target_position"]
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
 [connection signal="body_entered" from="Detection" to="SummonBody" method="_on_detection_body_entered"]
