@@ -1,6 +1,7 @@
 class_name ActionBehaviorTree extends Node
 
 @onready var summon_body: SummonBody = %SummonBody
+@onready var pick_up: Node = %PickUp
 
 
 @export var _is_doing_action: bool = false

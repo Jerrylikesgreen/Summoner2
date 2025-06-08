@@ -40,16 +40,14 @@ func _on_action_behavior_tree_action_behavior_started() -> void:
 
 func _on_detection_body_entered(body: Node2D) -> void:
 	summon_behavior_tree.change_state(2)
-	summon_body.target = to_local(body.global_position)
+	summon_body.target_position = to_local(body.global_position)
+	summon_body.target = body
 	move_to_body_entered()
 	current_target = body
+	print(current_target)
 	pass # Replace with function body.
-
+ 
 
 func _on_summon_body_on_idle_too_long() -> void:
 	summon_behavior_tree.change_state(1)
 	pass # Replace with function body.
-
-
-func _on_summon_body_reached_target_position() -> void:
-	print(current_target)

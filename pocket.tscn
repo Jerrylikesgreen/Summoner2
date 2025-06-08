@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d0dgdux7eqtu3"]
+
+[ext_resource type="Script" uid="uid://dn8tdwbudje5c" path="res://Scripts/pocket.gd" id="1_3ie8a"]
+
+[node name="Pocket" type="Node"]
+script = ExtResource("1_3ie8a")
