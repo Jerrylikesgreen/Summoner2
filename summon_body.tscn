@@ -106,4 +106,5 @@ shape = SubResource("CapsuleShape2D_444u8")
 [node name="Pocket" parent="." instance=ExtResource("5_0yfpa")]
 unique_name_in_owner = true
 
-[connection signal="reached_target_position" from="." to="Pocket" method="_on_summon_body_reached_target_position"]
+[connection signal="reached_target_position" from="." to="." method="_on_reached_target_position" flags=6]
+[connection signal="reached_target_position" from="." to="Pocket" method="_on_summon_body_reached_target_position" flags=6]

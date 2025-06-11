@@ -1,6 +1,8 @@
 class_name ItemBody
 extends RigidBody2D
 
+signal _on_taken_signal
+
 @onready var item_sprite  : Sprite2D = %ItemSprite
 
 
@@ -16,4 +18,7 @@ func _apply_visuals() -> void:
 	item_sprite.texture = selected_resource.icon
 	item_sprite.set_scale(Vector2(2.0, 2.0))
 
+	
+func _on_taken()->void:
+	emit_signal("_on_taken_signal")
 	

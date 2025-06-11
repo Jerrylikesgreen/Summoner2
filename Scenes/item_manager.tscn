@@ -14,7 +14,6 @@ script = ExtResource("1_ffe1k")
 unique_name_in_owner = true
 z_index = 4
 collision_layer = 16
-collision_mask = 3
 mass = 8.209
 gravity_scale = 0.0
 script = ExtResource("2_xhjot")
@@ -27,3 +26,5 @@ scale = Vector2(0.096, 0.096)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ItemBody"]
 unique_name_in_owner = true
 shape = SubResource("RectangleShape2D_aymgh")
+
+[connection signal="_on_taken_signal" from="ItemBody" to="." method="_on_item_body__on_taken_signal"]

@@ -43,11 +43,13 @@ func _update_selected_resource() -> void:
 	item_body._apply_visuals()
 
 
-func _on_taken()->Resource:
-	return selected_resource
-	queue_free()
+
 
 func apply_item_type(t:int)->void:
 	
 	item_type = t
 	_update_selected_resource()
+
+
+func _on_item_body__on_taken_signal() -> void:
+	queue_free()

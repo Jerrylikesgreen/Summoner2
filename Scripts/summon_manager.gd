@@ -12,7 +12,7 @@ var current_target:Node2D
 @export_enum("IDLE", "EXPLORE", "ACTION") var current_state = 0
 
 func _ready() -> void:
-	summon_body.summon_type()
+	pass
 	
 	
 func _process(_delta: float) -> void:
@@ -44,10 +44,15 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	summon_body.target = body
 	move_to_body_entered()
 	current_target = body
-	print(current_target)
+	print(body)
 	pass # Replace with function body.
  
 
 func _on_summon_body_on_idle_too_long() -> void:
+	summon_behavior_tree.change_state(1)
+	pass # Replace with function body.
+
+
+func _on_summon_body_reached_target_position() -> void:
 	summon_behavior_tree.change_state(1)
 	pass # Replace with function body.

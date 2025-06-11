@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dblap06nttvjc" path="res://Scenes/level.tscn" id="2_5a7ea"]
 
 [node name="World" type="Node2D"]
+scale = Vector2(0.887399, 0.925013)
 script = ExtResource("1_o06y3")
 
 [node name="Level" parent="." instance=ExtResource("2_5a7ea")]

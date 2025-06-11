@@ -69,6 +69,10 @@ func _handle_movement() -> void:
 
 	move_and_slide()
 
+
+func _on_taken():
+	pass
+
 # ─── Central input event hook (handles zoom + lock) ──────────────────────
 func _input(event: InputEvent) -> void:
 	# 1 — toggle lock immediately when Summon pressed / released

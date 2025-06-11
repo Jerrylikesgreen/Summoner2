@@ -1,7 +1,7 @@
 class_name Pocket extends Node
 
 
-@export var inventory:Dictionary[ItemResource,int]
+@export var inventory:Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,4 +14,6 @@ func _process(delta: float) -> void:
 
 
 func _on_summon_body_reached_target_position() -> void:
+	
+	print("yppp-[o]")
 	pass # Replace with function body.
