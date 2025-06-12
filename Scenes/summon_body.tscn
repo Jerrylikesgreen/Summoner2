@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://bfcgmuj73apqj"]
 
 [ext_resource type="Script" uid="uid://ctfbg7u6rwktc" path="res://Scripts/summon_body.gd" id="1_4jys3"]
-[ext_resource type="Resource" uid="uid://b4i6hi6pt0jjr" path="res://Resources/summon_resource.tres" id="2_tmyr1"]
+[ext_resource type="Resource" uid="uid://b4i6hi6pt0jjr" path="res://Resources/MobResources/summon_resource.tres" id="2_tmyr1"]
 [ext_resource type="Texture2D" uid="uid://daunm3s6tj2vq" path="res://PNG/BaseBody-Idle-Sheet.png" id="3_yv510"]
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="4_u3r37"]
-[ext_resource type="PackedScene" uid="uid://d0dgdux7eqtu3" path="res://pocket.tscn" id="5_0yfpa"]
+[ext_resource type="PackedScene" uid="uid://d0dgdux7eqtu3" path="res://Scenes/pocket.tscn" id="5_0yfpa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2e84q"]
 atlas = ExtResource("3_yv510")

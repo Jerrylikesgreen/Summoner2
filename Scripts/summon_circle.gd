@@ -2,17 +2,18 @@ class_name SummonCircle extends Node2D
 
 @onready var icon: Sprite2D = $Icon
 
-
+signal summon_spawned
 signal summoning(bool)
 enum SummonColor { YELLOW, GREEN, BLUE }
 @export var summon_color : SummonColor = SummonColor.YELLOW
 @export var _is_summoning: bool = false
-
+@export var _can_summon: bool = true
 const SUMMONS = preload("res://Scenes/summon_manager.tscn")
 var summon_target_position:Vector2
 var summon = SUMMONS.instantiate()
 var all_summons = {} # Dictionary : id -> Summon
 var next_enemy_id = 0
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -23,27 +24,28 @@ func _process(_delta: float) -> void:
 
 func get_input() -> void:
 	if Input.is_action_pressed("Summon"):
-		emit_signal("summoning", true)
-		icon.set_visible(true)
-		color_summon_circle() 
-		summon_target_position = get_global_mouse_position()
-		set_position(summon_target_position)
-		_is_summoning = true
-		if Input.is_action_just_pressed("SummonScrollUp"):
-			summon_color += 1
-			
-			if summon_color > 2:
-				summon_color = 0
-
-		if Input.is_action_just_pressed("SummonScrollDown"):
-			summon_color -= 1
-			if summon_color < 0:
-				summon_color = 2
-			
-		Globals.emit_signal(
-			"debug_signal", 
-			"Summoning", 
-			SummonColor.find_key(summon_color)
+		if _can_summon:
+			emit_signal("summoning", true)
+			icon.set_visible(true)
+			color_summon_circle() 
+			summon_target_position = get_global_mouse_position()
+			set_position(summon_target_position)
+			_is_summoning = true
+			if Input.is_action_just_pressed("SummonScrollUp"):
+				summon_color += 1
+				
+				if summon_color > 2:
+					summon_color = 0
+	
+			if Input.is_action_just_pressed("SummonScrollDown"):
+				summon_color -= 1
+				if summon_color < 0:
+					summon_color = 2
+				
+			Globals.emit_signal(
+				"debug_signal", 
+				"Summoning", 
+				SummonColor.find_key(summon_color)
 ) 
 
 	else:
@@ -54,6 +56,7 @@ func get_input() -> void:
 	if Input.is_action_just_pressed("Click"):
 		if _is_summoning == true:
 			spawn_summon()
+			
 			return
 
 func color_summon_circle() -> void:
@@ -88,5 +91,6 @@ func spawn_summon() -> void:
 	spawn.modulate = color_summon()
 	spawn.set_position(summon_target_position)
 	spawn.summon_name = Globals.data.summon_name
+	emit_signal("summon_spawned")
 	
 	return

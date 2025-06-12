@@ -16,9 +16,9 @@ class_name ItemManager extends Node2D
 enum ItemType { DEFAULT, MEAT, POTION, APPLE }
 ##  RESOURCE_POOL is a list of loaded scene files. Meat and Potion 
 const RESOURCE_POOL := {
-	ItemType.MEAT  : preload("res://Resources/meat_resource.tres"),
-	ItemType.POTION: preload("res://Resources/potion_resource.tres"),
-	ItemType.APPLE: preload("res://Resources/apple_resource.tres"),
+	ItemType.MEAT  : preload("res://Resources/ItemRsources/meat_resource.tres"),
+	ItemType.POTION: preload("res://Resources/ItemRsources/potion_resource.tres"),
+	ItemType.APPLE: preload("res://Resources/ItemRsources/apple_resource.tres"),
 }
 ## item type variable set at default. can be changed by calling ItemType enum. 
 @export var item_type : ItemType = ItemType.DEFAULT

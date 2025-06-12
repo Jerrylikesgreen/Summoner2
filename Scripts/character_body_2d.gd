@@ -14,8 +14,10 @@ extends CharacterBody2D
 # ─── Exported  ───────────────────────────────────────────────────────────
 @export var speed          : float = 100.0
 @export var camera_locked  : bool  = false   # toggled by Summon key
-@export_enum("North", "South", "East", "West")
-var player_direction : int = 2   # East by default
+@export_enum("North", "South", "East", "West") 
+var player_direction : int = 2   
+@export var player_stats:PlayerResource
+
 
 # ─── Direction constants (readable) ──────────────────────────────────────
 const DIR_N := 0
@@ -24,9 +26,11 @@ const DIR_E := 2
 const DIR_W := 3
 
 # ─── Zoom params ─────────────────────────────────────────────────────────
-const ZOOM_STEP := 0.1
+const ZOOM_STEP := 0.2
 const ZOOM_MIN  := 0.5
 const ZOOM_MAX  := 3.0
+
+var _able_to_summon: bool = true
 
 # ─── Internal helpers ────────────────────────────────────────────────────
 func _apply_zoom(s: int) -> void:
@@ -78,6 +82,7 @@ func _input(event: InputEvent) -> void:
 	# 1 — toggle lock immediately when Summon pressed / released
 	if event.is_action_pressed("Summon"):
 		camera_locked = true
+
 	elif event.is_action_released("Summon"):
 		camera_locked = false
 
@@ -90,3 +95,11 @@ func _input(event: InputEvent) -> void:
 		match event.button_index:
 			MOUSE_BUTTON_WHEEL_UP:   _apply_zoom(+1)
 			MOUSE_BUTTON_WHEEL_DOWN: _apply_zoom(-1)
+
+
+func check_summon_count()->bool:
+	if player_stats.max_summon_count == player_stats.summon_count:
+		_able_to_summon = false
+		return _able_to_summon
+	else:
+		return _able_to_summon

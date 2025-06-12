@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://rjjk06jjiu7a" path="res://Scripts/state_machine.gd" id="2_d57ri"]
 [ext_resource type="Script" uid="uid://dgaiyh6m7i7o8" path="res://Scripts/idle_behavior_tree.gd" id="3_ep7dd"]
 [ext_resource type="Script" uid="uid://cjn7u4ofgmk8j" path="res://Scripts/explore_behavior_tree.gd" id="4_ll5sk"]
-[ext_resource type="PackedScene" uid="uid://b3li4lyid4cqt" path="res://action_behavior_tree.tscn" id="5_duy7s"]
-[ext_resource type="Script" uid="uid://cmiqs2iwu1exq" path="res://pickup.gd" id="6_quryq"]
-[ext_resource type="PackedScene" uid="uid://bfcgmuj73apqj" path="res://summon_body.tscn" id="7_ep7dd"]
+[ext_resource type="PackedScene" uid="uid://b3li4lyid4cqt" path="res://Scenes/action_behavior_tree.tscn" id="5_duy7s"]
+[ext_resource type="Script" uid="uid://cmiqs2iwu1exq" path="res://Scripts/pickup.gd" id="6_quryq"]
+[ext_resource type="PackedScene" uid="uid://bfcgmuj73apqj" path="res://Scenes/summon_body.tscn" id="7_ep7dd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uawbc"]
 radius = 55.0364

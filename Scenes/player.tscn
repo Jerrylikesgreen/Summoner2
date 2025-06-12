@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3v8sqt2ditei"]
+[gd_scene load_steps=18 format=3 uid="uid://b3v8sqt2ditei"]
 
 [ext_resource type="Script" uid="uid://d361pq8gw7bea" path="res://Scripts/player.gd" id="1_fkybt"]
 [ext_resource type="Texture2D" uid="uid://daunm3s6tj2vq" path="res://PNG/BaseBody-Idle-Sheet.png" id="1_kelma"]
 [ext_resource type="Script" uid="uid://omy75l7rqblf" path="res://Scripts/character_body_2d.gd" id="1_xa75v"]
 [ext_resource type="Texture2D" uid="uid://ca2dsmc1gynu5" path="res://PNG/BaseBodyMoving-Sheet.png" id="2_y8w33"]
+[ext_resource type="Resource" uid="uid://bcyjl3pm875e2" path="res://Resources/MobResources/player_resource.tres" id="3_x3wgy"]
 [ext_resource type="PackedScene" uid="uid://dd3b6oin1jkaw" path="res://Scenes/summon_circle.tscn" id="5_fkybt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8w33"]
@@ -93,6 +94,7 @@ script = ExtResource("1_fkybt")
 unique_name_in_owner = true
 collision_mask = 56
 script = ExtResource("1_xa75v")
+player_stats = ExtResource("3_x3wgy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 sprite_frames = SubResource("SpriteFrames_r6jsd")
@@ -114,3 +116,5 @@ text = "Debug"
 
 [node name="SummonCircle" parent="." instance=ExtResource("5_fkybt")]
 unique_name_in_owner = true
+
+[connection signal="summon_spawned" from="SummonCircle" to="." method="_on_summon_circle_summon_spawned"]
